@@ -55,7 +55,7 @@ Specify a puzzle:
   --puzzle, -p  Specify puzzle directly             [string]
   --all-at      Read puzzles line-by-line from file [string]
 
-Generall options:
+General options:
 
   --help, -h    Show this help                      [boolean]
   --version, -v Print version                       [boolean]`;
