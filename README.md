@@ -1,5 +1,7 @@
 # @lhechenberger/sudoku-solver
 
+> [![CircleCI](https://circleci.com/gh/LukasHechenberger/sudoku-solver.svg?style=svg&circle-token=0b849565b92de0db918bf78ffb396096bfcd20b8)](https://circleci.com/gh/LukasHechenberger/sudoku-solver)
+
 ## Usage
 
 ```
