@@ -1,0 +1,44 @@
+{
+  "name": "@lhechenberger/sudoku-solver",
+  "version": "0.0.0",
+  "description": "Sudoku Solver",
+  "main": "out/index.js",
+  "bin": {
+    "sudoku-solver": "out/cli.js"
+  },
+  "types": "out/types/index.d.ts",
+  "scripts": {
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "rollup -c",
+    "build": "run-p build:*",
+    "clean": "rm -rf out",
+    "lint": "tslint -c tslint.json src/**/* rollup.config.js",
+    "test": "node ./out/cli.js --all-at test/fixtures/puzzles/hardest.puzzles",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run -s type-check -- --watch"
+  },
+  "author": "Lukas Hechenberger <npm@ls-age.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/mri": "^1.1.0",
+    "@types/pretty-ms": "^4.0.0",
+    "@types/string-width": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "mri": "^1.1.4",
+    "pretty-ms": "^4.0.0",
+    "string-width": "^3.0.0"
+  }
+}
