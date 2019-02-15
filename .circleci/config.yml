@@ -97,9 +97,7 @@ workflows:
       - deploy:
           requires:
             - lint-source
-            - test-coverage
-            - integration-tests
-            - test-docs
+            - test
           filters:
             branches:
               only:
