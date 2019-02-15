@@ -19,7 +19,6 @@
   },
   "author": "Lukas Hechenberger <npm@ls-age.com>",
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
@@ -40,5 +39,17 @@
     "mri": "^1.1.4",
     "pretty-ms": "^4.0.0",
     "string-width": "^3.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/sudoku-solver.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/LukasHechenberger/sudoku-solver/issues"
+  },
+  "homepage": "https://github.com/LukasHechenberger/sudoku-solver#readme"
 }
