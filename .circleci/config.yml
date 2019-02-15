@@ -1,0 +1,107 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+
+git-login: &git-login
+  name: Setting up git user
+  command: git config --global user.email ci@ls-age.com && git config --global user.name "ls-age CI"
+
+npm-login: &npm-login
+  name: Logging in to npm
+  command: echo "$NPM_TOKEN" > ~/.npmrc
+
+version: 2
+jobs:
+  install-deps:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Installing npm dependencies
+          command: npm ci
+      - run:
+          <<: *git-login
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Transpiling source code
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - out
+
+  lint-source:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Linting source files
+          command: npm run lint
+
+  test:
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Running tests
+          command: npm run test
+
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - add_ssh_keys
+      - attach_workspace:
+          at: .
+      - run:
+          <<: *git-login
+      - run:
+          <<: *npm-login
+      - run:
+          name: Deploying changes
+          command:
+            npx @ls-age/bump-version release --gh-token $RELEASE_GITHUB_TOKEN
+
+workflows:
+  version: 2
+
+  test-and-deploy:
+    jobs:
+      - install-deps
+      - build:
+          requires:
+            - install-deps
+      - lint-source:
+          requires:
+            - install-deps
+      - test:
+          requires:
+            - install-deps
+      - deploy:
+          requires:
+            - lint-source
+            - test-coverage
+            - integration-tests
+            - test-docs
+          filters:
+            branches:
+              only:
+                - master
+                - beta
