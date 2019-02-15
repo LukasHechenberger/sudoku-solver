@@ -55,6 +55,15 @@ jobs:
           name: Linting source files
           command: npm run lint
 
+  type-check:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Checking typing
+          command: npm run type-check
+
   test:
     <<: *defaults
     steps:
@@ -92,12 +101,16 @@ workflows:
       - lint-source:
           requires:
             - install-deps
+      - type-check:
+          requires:
+            - install-deps
       - test:
           requires:
             - build
       - deploy:
           requires:
             - lint-source
+            - type-check
             - test
           filters:
             branches:
