@@ -1,8 +1,8 @@
 # @lhechenberger/sudoku-solver
 
-> A simple sudoku solver implemented in TypeScript. Loosly based on [a post by Peter Norvig](http://norvig.com/sudoku.html).
+> A simple sudoku solver implemented in TypeScript. Loosely based on [a post by Peter Norvig](http://norvig.com/sudoku.html).
 >
-> This just a research project.
+> This is just a research project.
 
 [![CircleCI](https://circleci.com/gh/LukasHechenberger/sudoku-solver.svg?style=svg&circle-token=0b849565b92de0db918bf78ffb396096bfcd20b8)](https://circleci.com/gh/LukasHechenberger/sudoku-solver)
 
