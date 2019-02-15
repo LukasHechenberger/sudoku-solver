@@ -6,6 +6,10 @@
 
 [![CircleCI](https://circleci.com/gh/LukasHechenberger/sudoku-solver.svg?style=svg&circle-token=0b849565b92de0db918bf78ffb396096bfcd20b8)](https://circleci.com/gh/LukasHechenberger/sudoku-solver)
 
+## Installation
+
+You can either install this package locally by running `npm i -g @lhechenberger/sudoku-solver` or run it directly with `npx @lhechenberger/sudoku-solver [arguments...]`.
+
 ## Usage
 
 ```
