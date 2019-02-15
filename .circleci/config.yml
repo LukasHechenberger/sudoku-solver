@@ -94,7 +94,7 @@ workflows:
             - install-deps
       - test:
           requires:
-            - install-deps
+            - build
       - deploy:
           requires:
             - lint-source
