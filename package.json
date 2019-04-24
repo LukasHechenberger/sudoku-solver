@@ -38,7 +38,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "mri": "^1.1.4",
-    "pretty-ms": "^4.0.0",
+    "pretty-ms": "^5.0.0",
     "string-width": "^4.0.0"
   },
   "directories": {
